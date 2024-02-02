@@ -23,7 +23,7 @@ function preload() {
 
     chooseColor = document.getElementById("choose-color");
     chooseColor.addEventListener("change", function() {
-      document.querySelector("body").style.backgroundColor = chooseColor.value
+      document.querySelector("#frame").style.backgroundColor = chooseColor.value
     })
 
     chooseDist = document.getElementById("choose-dist");

@@ -4,30 +4,43 @@
     font-family: sans-serif;
 }
 
-body { 
-    background: #ebe8e8;
+body {
+    background: #F3F1E7;
     display: flex;
+    margin: auto;
+    background-image: url('assets/images/grid.avif');
 }
+
 .container {
     box-sizing: border-box;
-    padding: 20px; /* Подгоните ваши отступы по необходимости */
+    padding: 20px;
+    margin: 20px;
+    
 }
 
 .frame {
-    background-color: white;
     width: fit-content;
-    padding: 20px;
+    padding: 50px;
+    margin: 0 auto;
+    /* From https://css.glass */
+    background: rgba(244, 242, 242, 0.21);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.2px);
+    -webkit-backdrop-filter: blur(6.2px);
+    border: 1px dashed rgb(124, 123, 123);
+    
 }
 
 .title {
-    font-size: 60px;
+    font-size: 30px;
     font-weight: bold;
-    padding-top: 10px;
+    padding: 10px;
 }
 
 .controls {
     display: flex;
-    flex-direction : column;
+    flex-direction: column;
     gap: 10px;
 }
 
@@ -38,22 +51,40 @@ body {
     justify-content: right;
 }
 
-.range_input > output {
+.range_input>output {
     padding-left: 10px;
 }
 
 #params {
     width: 30%;
-    background-color: lightblue;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 #image {
     width: 50%;
     margin: auto;
-    background-color: lightgreen;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 #about {
     width: 20%;
-    background-color: lightcoral;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
