@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+    <script src="sketch.js"></script>
+    <title>Wave Logo Generator</title>
+</head>
+<body>
+    <div class="container" id="params">
+        <div class="title">
+            <p> Wave Logo Generator </p>
+        </div>
+        <div class="controls">
+            <div class="color-picker">
+                <label for="choose-color">Background : </label>
+                <input type="color" id="choose-color" name="choose-color" value="#2541E1"/>
+            </div>
+            <input type="file" id="choose-file" name="choose-file" accept="image/*" />
+            <div class="range_input">
+                <label for="choose-dist"> Distance : </label>
+                <input type="range" id="choose-dist" name="choose-dist" value="5" min = "3" max = "20" step="1" oninput="this.nextElementSibling.value  = this.value"/>
+                <output>5</output>
+            </div>
+            <div class="range_input">
+                <label for="choose-height"> Height : </label>
+                <input type="range" id="choose-height" name="choose-height" value="5" min="-20" max = "20" step="1" oninput="this.nextElementSibling.value  = this.value"/>
+                <output>5</output>
+            </div>            
+        </div>
+    </div>
+    <div class="container" id="image">
+        <div class="frame">
+            <main></main>
+        </div> 
+    </div>
+    <div class="container" id="about">
+        <div class="frame">
+            <div class="info">
+                <p>Made by khlebobul</p>
+            </div>
+            <main></main>
+        </div> 
+    </div>
+</body>
+</html>
