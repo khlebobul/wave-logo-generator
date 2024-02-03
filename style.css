@@ -8,7 +8,7 @@ body {
     background: #F3F1E7;
     display: flex;
     margin: auto;
-    background-image: url('assets/images/grid.avif');
+    background-image: url('assets/images/grid.png');
 }
 
 .container {
