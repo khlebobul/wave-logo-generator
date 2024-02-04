@@ -1,7 +1,7 @@
 
 var img;
 var chooseFile;
-var chooseColor;
+var chooseBackgroundColor;
 var chooseDist;
 var chooseHeight;
 
@@ -21,9 +21,9 @@ function preload() {
         getImgData();
       });
 
-    chooseColor = document.getElementById("choose-color");
-    chooseColor.addEventListener("change", function() {
-      document.querySelector("#frame").style.backgroundColor = chooseColor.value
+    chooseBackgroundColor = document.getElementById("choose-background-color");
+    chooseBackgroundColor.addEventListener("change", function() {
+      document.querySelector("#frame").style.backgroundColor = chooseBackgroundColor.value
     })
 
     chooseDist = document.getElementById("choose-dist");
@@ -47,7 +47,7 @@ function getImgData() {
 
 
 function setup() {
-  createCanvas(600,600);
+  createCanvas(500,500);
   blurred = 0
   blurRadius = 5
 }
@@ -57,7 +57,7 @@ function setup() {
 function draw() {
 
   
-  background(`${chooseColor.value}`);
+  background(`${chooseBackgroundColor.value}`);
 
     if(img) {
     if(blurred == 0 || isVanishing) {
@@ -102,7 +102,7 @@ function draw() {
   for(let i = 0 + band; i < img.height - band; i += waveDist) {
     noFill();
     strokeWeight(str);
-    stroke('rgba(255,255,255,0.5)')
+    stroke('rgba(255,255,255,0.5)') // wave color
     beginShape()
     for(let j = 0; j < img.width; j++) {
       var y = map(hMap[j][i], 255,0,0,waveHeight)
@@ -110,7 +110,7 @@ function draw() {
     }
 
     endShape()
-    str -= 0.1
+    str -= 0
   }
   
   str = startingStroke
@@ -118,7 +118,7 @@ function draw() {
   for(let i = 0 + band; i < img.height - band; i += waveDist) {
     noFill();
     strokeWeight(str);
-    stroke('rgba(255,255,255,0.5)')
+    stroke('rgba(255,255,255,0.5)') // wave color
     var shapeEnded = 1
     beginShape()
     for(let j = 0; j < img.width; j++) {
