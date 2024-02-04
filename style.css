@@ -8,20 +8,12 @@ body {
     background: #F3F1E7;
     display: flex;
     margin: auto;
-    background-image: url('assets/images/bg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: rgb(195,163,231);
+    background: radial-gradient(circle, rgba(195,163,231,1) 16%, rgba(251,241,226,1) 96%);
     
 }
 
-.container {
-    box-sizing: border-box;
-    padding: 20px;
-    margin: 20px;
-    
-}
-
-.frame {
+.frame,.controls,.info {
     width: fit-content;
     padding: 50px;
     margin: 0 auto;
@@ -31,15 +23,12 @@ body {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(6.2px);
     -webkit-backdrop-filter: blur(6.2px);
-    border: 1px dashed rgb(124, 123, 123);
-    
 }
 
-.title {
-    font-size: 30px;
-    font-weight: bold;
-    padding: 10px;
+.frame {
+    border: 1px dashed rgb(124, 123, 123); 
 }
+
 
 .controls {
     display: flex;
@@ -58,36 +47,17 @@ body {
     padding-left: 10px;
 }
 
-#params {
-    width: 30%;
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
+/* layout */ 
 
-#image {
-    width: 50%;
-    margin: auto;
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-#about {
-    width: 20%;
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
+.container {
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 400px 900px 250px;
+    grid-template-rows: 2fr 100px;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    justify-items: center;
+    align-items: center;
+ }
