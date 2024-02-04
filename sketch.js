@@ -4,6 +4,11 @@ var chooseFile;
 var chooseBackgroundColor;
 var chooseDist;
 var chooseHeight;
+var chooseGradient;
+var chooseWaveColor;
+var chooseMargin;
+var chooseWidth;
+var chooseWaveElevation;
 
 var blurred;
 var blurRadius;
@@ -26,9 +31,17 @@ function preload() {
       document.querySelector("#frame").style.backgroundColor = chooseBackgroundColor.value
     })
 
+    chooseWaveColor = document.getElementById("choose-wave-color");
+    chooseWaveColor.addEventListener("change", function() {
+      
+    })
+
     chooseDist = document.getElementById("choose-dist");
     chooseHeight = document.getElementById("choose-height");
-
+    chooseGradient = document.getElementById("choose-gradient");
+    chooseMargin = document.getElementById("choose-margin");
+    chooseWidth = document.getElementById("choose-width");
+    chooseWaveElevation = document.getElementById("choose-wave-elevation");
 
 }
 

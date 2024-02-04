@@ -25,6 +25,15 @@
             value="#2541E1"
           />
         </div>
+        <div class="color-picker">
+          <label for="choose-wave-color">Wave : </label>
+          <input
+            type="color"
+            id="choose-wave-color"
+            name="choose-wave-color"
+            value="#2541E1"
+          />
+        </div>
         <input
           type="file"
           id="choose-file"
@@ -46,7 +55,7 @@
           <output>5</output>
         </div>
         <div class="range_input">
-          <label for="choose-height"> Height : </label>
+          <label for="choose-height"> Shape volume : </label>
           <input
             type="range"
             id="choose-height"
@@ -59,12 +68,66 @@
           />
           <output>5</output>
         </div>
+        <div class="range_input">
+          <label for="choose-margin"> Margin  : </label>
+          <input
+            type="range"
+            id="choose-margin"
+            name="choose-margin"
+            value="5"
+            min="-20"
+            max="20"
+            step="1"
+            oninput="this.nextElementSibling.value  = this.value"
+          />
+          <output>5</output>
+        </div>
+        <div class="range_input">
+          <label for="choose-width"> Wave width  : </label>
+          <input
+            type="range"
+            id="choose-width"
+            name="choose-width"
+            value="5"
+            min="-20"
+            max="20"
+            step="1"
+            oninput="this.nextElementSibling.value  = this.value"
+          />
+          <output>5</output>
+        </div>
+        <div class="range_input">
+          <label for="choose-elevation"> Wave height  : </label>
+          <input
+            type="range"
+            id="choose-elevation"
+            name="choose-elevation"
+            value="5"
+            min="-20"
+            max="20"
+            step="1"
+            oninput="this.nextElementSibling.value  = this.value"
+          />
+          <output>5</output>
+        </div>
+        <div class="range_input">
+          <label for="choose-gradient"> Wave gradient  : </label>
+          <input
+            type="range"
+            id="choose-gradient"
+            name="choose-gradient"
+            value="5"
+            min="-20"
+            max="20"
+            step="1"
+            oninput="this.nextElementSibling.value  = this.value"
+          />
+          <output>5</output>
+        </div>
+        <h4>Made by khlebobul</h4>
       </div>
       <div class="frame">
         <main></main>
-      </div>
-      <div class="info">
-        <p>Made by khlebobul</p>
       </div>
   </body>
 </html>
