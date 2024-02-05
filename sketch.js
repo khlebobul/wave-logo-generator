@@ -4,11 +4,10 @@ var chooseFile;
 var chooseBackgroundColor;
 var chooseDist;
 var chooseHeight;
-var chooseGradient;
 var chooseWaveColor;
 var chooseMargin;
 var chooseWidth;
-var chooseWaveElevation;
+var chooseShapeColor;
 
 var blurred;
 var blurRadius;
@@ -26,22 +25,37 @@ function preload() {
         getImgData();
       });
 
+// Colors
+
+// Background
+
     chooseBackgroundColor = document.getElementById("choose-background-color");
     chooseBackgroundColor.addEventListener("change", function() {
       document.querySelector("#frame").style.backgroundColor = chooseBackgroundColor.value
     })
 
+
+// Wave
+
     chooseWaveColor = document.getElementById("choose-wave-color");
     chooseWaveColor.addEventListener("change", function() {
-      
+       document.querySelector("#frame").style.waveColor = chooseWaveColor.value
     })
+
+// Shape
+
+    chooseShapeColor = document.getElementById("choose-shape-color");
+    chooseShapeColor.addEventListener("change", function() {
+      document.querySelector("#frame").style.shapeColor = chooseShapeColor.value
+    })
+
+
+// Params
 
     chooseDist = document.getElementById("choose-dist");
     chooseHeight = document.getElementById("choose-height");
-    chooseGradient = document.getElementById("choose-gradient");
     chooseMargin = document.getElementById("choose-margin");
     chooseWidth = document.getElementById("choose-width");
-    chooseWaveElevation = document.getElementById("choose-wave-elevation");
 
 }
 
@@ -60,7 +74,7 @@ function getImgData() {
 
 
 function setup() {
-  createCanvas(600,600);
+  createCanvas(600,600); // Canvas size
   blurred = 0
   blurRadius = 5
 }
@@ -97,25 +111,28 @@ function draw() {
       const g = img.pixels[pixelIndex+1];
       const b = img.pixels[pixelIndex+2];
       //heatMap
-      hMap[j][i] = (r + g + b)/ 3 ;
+      hMap[j][i] = (r + g + b)/ 3 ; // Shape volume
       //square(j*w, i*h, w);
     }
   }
   
-  startingStroke = 5
+  startingStroke = int(chooseWidth.value) // Wave width
   
   var str = startingStroke
   
-  var band = 35
+  var band = int(chooseMargin.value) // Margin
   
-  var waveDist = int(chooseDist.value);
+  var waveDist = int(chooseDist.value); // Wave distance
   
-  var waveHeight = int(chooseHeight.value);
+  var waveHeight = int(chooseHeight.value); // Shape volume
   
   for(let i = 0 + band; i < img.height - band; i += waveDist) {
     noFill();
     strokeWeight(str);
-    stroke('rgba(255,255,255,0.5)') // wave color
+
+    stroke(`${chooseWaveColor.value}`);
+
+    // stroke('rgba(255,255,255,0.5)') // Wave color
     beginShape()
     for(let j = 0; j < img.width; j++) {
       var y = map(hMap[j][i], 255,0,0,waveHeight)
@@ -123,7 +140,7 @@ function draw() {
     }
 
     endShape()
-    str -= 0
+    str -= 0 // Wave gradient
   }
   
   str = startingStroke
@@ -131,7 +148,10 @@ function draw() {
   for(let i = 0 + band; i < img.height - band; i += waveDist) {
     noFill();
     strokeWeight(str);
-    stroke('rgba(255,255,255,0.5)') // wave color
+
+    stroke(`${chooseShapeColor.value}`);
+
+    // stroke('rgba(255,255,255,0.5)') // Shape color
     var shapeEnded = 1
     beginShape()
     for(let j = 0; j < img.width; j++) {
@@ -151,7 +171,7 @@ function draw() {
     }
 
     endShape()
-    str -= 0.1
+    str -= 0.1 // градиент волн (толщина) фигуры
   }
     }
     
