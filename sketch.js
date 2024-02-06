@@ -7,6 +7,8 @@ let startingStroke;
 let offsetX = 0; // Начальное горизонтальное смещение
 let offsetY = 0; // Начальное вертикальное смещение
 
+let isDragging = false; // Переменная для отслеживания, зажата ли кнопка мыши
+
 let chooseFile;
 let chooseBackgroundColor;
 let chooseDist;
@@ -148,9 +150,31 @@ function draw() {
   }
 }
 
-// Функция для изменения offsetX и offsetY с помощью мыши
-function mouseDragged() {
-  offsetX += mouseX - pmouseX;
-  offsetY += mouseY - pmouseY;
+// Функция для начала перемещения элемента при зажатии кнопки мыши
+function mousePressed() {
+  // Проверяем, находится ли курсор мыши в пределах canvas
+  if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
+    isDragging = true;
+    // Устанавливаем предыдущие координаты мыши
+    previousMouseX = mouseX;
+    previousMouseY = mouseY;
+  }
 }
 
+// Функция для окончания перемещения элемента при отпускании кнопки мыши
+function mouseReleased() {
+  isDragging = false;
+}
+
+// Функция для изменения offsetX и offsetY с помощью мыши только при зажатой кнопке
+function mouseDragged() {
+  // Проверяем, зажата ли кнопка мыши
+  if (isDragging) {
+    // Обновляем смещение только при зажатой кнопке мыши
+    offsetX += mouseX - previousMouseX;
+    offsetY += mouseY - previousMouseY;
+    // Обновляем предыдущие координаты мыши
+    previousMouseX = mouseX;
+    previousMouseY = mouseY;
+  }
+}
