@@ -77,6 +77,12 @@ h1 {
     width: 300px;
 }
 
+.color-picker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .range-lable {
     font-size: 21px;
 }
