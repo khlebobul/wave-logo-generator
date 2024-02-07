@@ -80,7 +80,9 @@ h1 {
 #choose-dist,
 #choose-height,
 #choose-margin,
-#choose-width {
+#choose-width,
+#choose-icon-degrees,
+#choose-waves-degrees {
     width: 300px;
 }
 
@@ -103,7 +105,7 @@ h1 {
 }
 
 output {
-    width: 20px;
+    width: 25px;
 }
 
 a {
