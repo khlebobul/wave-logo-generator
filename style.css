@@ -83,6 +83,12 @@ h1 {
     align-items: center;
 }
 
+#choose-shape-color, #choose-wave-color, #choose-background-color {
+    width: 200px;
+    border-style: none;
+    background-color:#ffffff00;
+}
+
 .range-lable {
     font-size: 21px;
 }
