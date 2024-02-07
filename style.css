@@ -9,7 +9,8 @@ body {
     margin: auto;
     background: rgb(195, 163, 231);
     background: radial-gradient(circle, rgba(195, 163, 231, 1) 16%, rgba(251, 241, 226, 1) 96%);
-    font-family: 'Single Day', cursive;
+    font-family: 'Gluten', cursive;
+    color: #3f3f3f;
 
 }
 
@@ -55,7 +56,6 @@ body {
     margin: 20px;
     display: grid;
     grid-template-columns: 400px 900px;
-    grid-template-rows: 2fr 100px;
     grid-column-gap: 20px;
     grid-row-gap: 20px;
     justify-items: center;
@@ -63,8 +63,10 @@ body {
 }
 
 .about {
-    font-size: 18px;
+    font-size: 15px;
     padding-top: 30px;
+    font-weight: 100;
+    line-height: 20px;
 }
 
 .range_input,
@@ -74,7 +76,9 @@ body {
 
 h1 {
     margin: auto;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
+    font-weight: 900;
+    font-size: 25px;
 }
 
 #choose-dist,
@@ -98,14 +102,23 @@ h1 {
     width: 200px;
     border-style: none;
     background-color: #ffffff00;
+    font-size: 17px;
+    font-size: 300;
 }
 
 .range-lable {
-    font-size: 21px;
+    font-size: 16px;
+    font-size: 300;
+}
+
+label {
+    font-size: 16px;
+    font-size: 300;
 }
 
 output {
     width: 25px;
+    font-size: 16px;
 }
 
 a {
