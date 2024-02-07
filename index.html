@@ -1,124 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
-    <script src="sketch.js"></script>
-    <title>Wave Logo Generator</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
-    <link rel="manifest" href="assets/favicon/site.webmanifest" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div class="container" id="params">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="style.css" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+      <script src="sketch.js"></script>
+      <title>Wave Logo Generator</title>
+      <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+      <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+      <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+      <link rel="manifest" href="assets/favicon/site.webmanifest" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+   </head>
+   <body>
+      <div class="container" id="params">
       <div class="controls">
-        <h1>Wave Logo Generator</h1>
-        <div class="color-picker">
-          <label for="choose-background-color">Background color </label>
-          <input
-            type="color"
-            id="choose-background-color"
-            name="choose-background-color"
-            value="#2541E1"
-          />
-        </div>
-        <div class="color-picker">
-          <label for="choose-wave-color">Wave color </label>
-          <input
-            type="color"
-            id="choose-wave-color"
-            name="choose-wave-color"
-            value="#95A0EA"
-          />
-        </div>
-        <div class="color-picker">
-          <label for="choose-shape-color">Shape color </label>
-          <input
-            type="color"
-            id="choose-shape-color"
-            name="choose-shape-color"
-            value="#FFFFFF"
-          />
-        </div>
-        <p1 class="range-lable">Distance</p1>
-        <div class="range_input">
-          <label for="choose-dist"></label>
-          <input
-            type="range"
-            id="choose-dist"
-            name="choose-dist"
-            value="5"
-            min="2"
-            max="20"
-            step="1"
-            oninput="this.nextElementSibling.value  = this.value"
-          />
-          <output>5</output>
-        </div>
-        <p1 class="range-lable">Shape volume</p1>
-        <div class="range_input">
-          <label for="choose-height"></label>
-          <input
-            type="range"
-            id="choose-height"
-            name="choose-height"
-            value="5"
-            min="-20"
-            max="20"
-            step="1"
-            oninput="this.nextElementSibling.value  = this.value"
-          />
-          <output>5</output>
-        </div>
-        <p1 class="range-lable">Margin</p1>
-        <div class="range_input">
-          <label for="choose-margin"></label>
-          <input
-            type="range"
-            id="choose-margin"
-            name="choose-margin"
-            value="3"
-            min="0"
-            max="40"
-            step="1"
-            oninput="this.nextElementSibling.value  = this.value"
-          />
-          <output>3</output>
-        </div>
-        <p1 class="range-lable">Wave width</p1>
-        <div class="range_input">
-          <label for="choose-width"></label>
-          <input
-            type="range"
-            id="choose-width"
-            name="choose-width"
-            value="5"
-            min="1"
-            max="10"
-            step=".5"
-            oninput="this.nextElementSibling.value  = this.value"
-          />
-          <output>5</output>
-        </div>
-        <p1 class="about">Made by Gleb (a.k.a. khlebobul). Check my <a href="https://bento.me/khlebobul">Website</a>, <a href="https://twitter.com/khlebobul">Thoughts</a> and <a href="https://instagram.com/khlebobul">Photos</a>.<br>
-        Support this project through <a href="https://bmc.link/khlebobul">Buy Me a Coffee</a> or <a href="https://pay.cloudtips.ru/p/edff283a">Cloudtips</a>.<br>
-        Thanks to <a href="https://ivandianov.com/">Ivan</a> and <a href="https://cdarr.ru/">Adam</a> from <a href="https://setka.design">setka.design</a> for their help, inspiration and great <a href="https://setka.design">course</a>.<br>
-        Thanks to Lucide for the <a href="https://lucide.dev/">Icons</a>.</p1>
+         <h1>Wave Logo Generator</h1>
+         <div class="color-picker">
+            <label for="choose-background-color">Background color </label>
+            <input
+               type="color"
+               id="choose-background-color"
+               name="choose-background-color"
+               value="#2541E1"
+               />
+         </div>
+         <div class="color-picker">
+            <label for="choose-wave-color">Wave color </label>
+            <input
+               type="color"
+               id="choose-wave-color"
+               name="choose-wave-color"
+               value="#95A0EA"
+               />
+         </div>
+         <div class="color-picker">
+            <label for="choose-shape-color">Shape color </label>
+            <input
+               type="color"
+               id="choose-shape-color"
+               name="choose-shape-color"
+               value="#FFFFFF"
+               />
+         </div>
+         <p1 class="range-lable">Distance</p1>
+         <div class="range_input">
+            <label for="choose-dist"></label>
+            <input
+               type="range"
+               id="choose-dist"
+               name="choose-dist"
+               value="5"
+               min="2"
+               max="20"
+               step="1"
+               oninput="this.nextElementSibling.value  = this.value"
+               />
+            <output>5</output>
+         </div>
+         <p1 class="range-lable">Shape volume</p1>
+         <div class="range_input">
+            <label for="choose-height"></label>
+            <input
+               type="range"
+               id="choose-height"
+               name="choose-height"
+               value="5"
+               min="-20"
+               max="20"
+               step="1"
+               oninput="this.nextElementSibling.value  = this.value"
+               />
+            <output>5</output>
+         </div>
+         <p1 class="range-lable">Margin</p1>
+         <div class="range_input">
+            <label for="choose-margin"></label>
+            <input
+               type="range"
+               id="choose-margin"
+               name="choose-margin"
+               value="3"
+               min="0"
+               max="40"
+               step="1"
+               oninput="this.nextElementSibling.value  = this.value"
+               />
+            <output>3</output>
+         </div>
+         <p1 class="range-lable">Wave width</p1>
+         <div class="range_input">
+            <label for="choose-width"></label>
+            <input
+               type="range"
+               id="choose-width"
+               name="choose-width"
+               value="5"
+               min="1"
+               max="10"
+               step=".5"
+               oninput="this.nextElementSibling.value  = this.value"
+               />
+            <output>5</output>
+         </div>
+         <p1 class="about">Made by Gleb (a.k.a. khlebobul). Check my <a href="https://bento.me/khlebobul">Website</a>, <a href="https://twitter.com/khlebobul">Thoughts</a> and <a href="https://instagram.com/khlebobul">Photos</a>.<br>
+            Support this project through <a href="https://bmc.link/khlebobul">Buy Me a Coffee</a> or <a href="https://pay.cloudtips.ru/p/edff283a">Cloudtips</a>.<br>
+            Thanks to <a href="https://ivandianov.com/">Ivan</a> and <a href="https://cdarr.ru/">Adam</a> from <a href="https://setka.design">setka.design</a> for their help, inspiration and great <a href="https://setka.design">course</a>.<br>
+            Thanks to Lucide for the <a href="https://lucide.dev/">Icons</a>.
+         </p1>
       </div>
       <div class="frame">
-        <main></main>
-        <input
-          type="file"
-          id="choose-file"
-          name="choose-file"
-          accept="image/*"
-        />
+         <main></main>
+         <label for="choose-file" class="file-button">Choose File</label>
+         <input
+            type="file"
+            id="choose-file"
+            name="choose-file"
+            accept="image/*"
+            style="display: none;"
+            />
       </div>
-  </body>
+   </body>
 </html>

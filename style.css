@@ -7,13 +7,15 @@ body {
     background: #F3F1E7;
     display: flex;
     margin: auto;
-    background: rgb(195,163,231);
-    background: radial-gradient(circle, rgba(195,163,231,1) 16%, rgba(251,241,226,1) 96%);
-    font-family: 'Single Day', cursive;  
+    background: rgb(195, 163, 231);
+    background: radial-gradient(circle, rgba(195, 163, 231, 1) 16%, rgba(251, 241, 226, 1) 96%);
+    font-family: 'Single Day', cursive;
 
 }
 
-.frame,.controls,.info {
+.frame,
+.controls,
+.info {
     width: fit-content;
     margin: 0 auto;
     /* From https://css.glass */
@@ -27,6 +29,7 @@ body {
 .frame {
     padding: 50px;
 }
+
 .controls {
     display: flex;
     flex-direction: column;
@@ -44,7 +47,7 @@ body {
     padding-left: 10px;
 }
 
-/* layout */ 
+/* layout */
 
 .container {
     box-sizing: border-box;
@@ -57,14 +60,15 @@ body {
     grid-row-gap: 20px;
     justify-items: center;
     align-items: center;
- }
+}
 
 .about {
     font-size: 18px;
     padding-top: 30px;
 }
 
-.range_input, .color-picker {
+.range_input,
+.color-picker {
     font-size: 21px;
 }
 
@@ -73,7 +77,10 @@ h1 {
     padding-bottom: 50px;
 }
 
-#choose-dist, #choose-height, #choose-margin, #choose-width {
+#choose-dist,
+#choose-height,
+#choose-margin,
+#choose-width {
     width: 300px;
 }
 
@@ -83,10 +90,12 @@ h1 {
     align-items: center;
 }
 
-#choose-shape-color, #choose-wave-color, #choose-background-color {
+#choose-shape-color,
+#choose-wave-color,
+#choose-background-color {
     width: 200px;
     border-style: none;
-    background-color:#ffffff00;
+    background-color: #ffffff00;
 }
 
 .range-lable {
@@ -99,4 +108,25 @@ output {
 
 a {
     color: #5d5c5c;
+}
+
+.file-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 1);
+    margin-top: 10px;
+}
+
+.file-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.375);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 1);
 }
