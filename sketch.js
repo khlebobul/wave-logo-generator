@@ -145,7 +145,7 @@ function draw() {
       }
 
       endShape();
-      str -= 0.1;
+      str -= 0;
     }
   }
 }
