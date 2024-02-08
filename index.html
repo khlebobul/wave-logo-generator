@@ -3,9 +3,7 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="stylesheet" href="style.css" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
-      <script src="sketch.js"></script>
+      <link rel="stylesheet" href="styles/style.css" />
       <title>Wave Logo Generator</title>
       <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
@@ -13,7 +11,7 @@
       <link rel="manifest" href="assets/favicon/site.webmanifest" />
       <link rel="preconnect" href="https://fonts.googleapis.com">   
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@100;300;900&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@200;300;900&display=swap" rel="stylesheet">
    </head>
    <body>
       <div class="container" id="params">
@@ -54,13 +52,13 @@
                type="range"
                id="choose-dist"
                name="choose-dist"
-               value="5"
+               value="10"
                min="2"
                max="20"
                step="1"
                oninput="this.nextElementSibling.value  = this.value"
                />
-            <output>5</output>
+            <output>10</output>
          </div>
          <p1 class="range-lable">Shape volume</p1>
          <div class="range_input">
@@ -143,7 +141,8 @@
       </div>
       <div class="frame">
          <main></main>
-         <label for="choose-file" class="file-button">Choose file</label>
+         <div class="buttons">
+          <label for="choose-file" class="file-button">Choose file</label>
          <input
             type="file"
             id="choose-file"
@@ -151,6 +150,19 @@
             accept="image/*"
             style="display: none;"
             />
+            <label for="choose-icon" class="file-button">Choose icon</label>
+         <input
+            type="file"
+            id="choose-icon"
+            name="choose-icon"
+            accept="image/*"
+            style="display: none;"
+            />
+            <button id="save-png">Download PNG</button>
+         </div>
+         
       </div>
    </body>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+   <script src="script/sketch.js"></script>
 </html>

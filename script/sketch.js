@@ -45,6 +45,8 @@ function preload() {
   chooseShapeColor.addEventListener("change", function () {
     document.querySelector("#frame").style.shapeColor = chooseShapeColor.value;
   });
+
+  
 }
 
 function getImgData() {
@@ -178,3 +180,8 @@ function mouseDragged() {
     previousMouseY = mouseY;
   }
 }
+
+// Обработчик события для кнопки сохранения изображения
+document.getElementById("save-png").addEventListener("click", function () {
+      save("wave-logo.png"); // Сохраняем canvas в формате PNG с именем "output"
+});
