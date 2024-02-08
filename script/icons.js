@@ -26,7 +26,7 @@ function closeModal() {
 }
 
 // Загрузка иконок из JSON-файла
-fetch('icons.json')
+fetch('iconsCategories.json')
   .then(response => response.json())
   .then(data => {
     const iconsData = Object.entries(data); // Преобразование объекта в массив пар [ключ, значение]
