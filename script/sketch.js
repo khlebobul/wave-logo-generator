@@ -181,55 +181,7 @@ function mouseDragged() {
   }
 }
 
-const icons = ["volume-2", "x", "menu", "activity", "airplay", "alert-circle", "archive", "at-sign", "bell", "book", "camera"];
-
-function displayIcons() {
-  const iconGrid = document.getElementById("iconGrid");
-  iconGrid.innerHTML = '';
-
-  icons.forEach(function(iconName) {
-    const icon = document.createElement("i");
-    icon.classList.add("icon");
-    icon.setAttribute("data-lucide", iconName);
-    icon.innerHTML = iconName;
-    icon.onclick = function() {
-      selectIcon(iconName);
-    };
-    iconGrid.appendChild(icon);
-  });
-}
-
-function openModal() {
-  document.getElementById("iconPickerModal").style.display = "block";
-}
-
-function closeModal() {
-  document.getElementById("iconPickerModal").style.display = "none";
-}
-
-document.getElementById("searchIconInput").addEventListener("input", function() {
-  const searchQuery = this.value.toLowerCase();
-  const filteredIcons = icons.filter(function(iconName) {
-    return iconName.includes(searchQuery);
-  });
-
-  const iconGrid = document.getElementById("iconGrid");
-  iconGrid.innerHTML = '';
-  filteredIcons.forEach(function(iconName) {
-    const icon = document.createElement("i");
-    icon.classList.add("icon");
-    icon.setAttribute("data-lucide", iconName);
-    icon.innerHTML = iconName;
-    icon.onclick = function() {
-      selectIcon(iconName);
-    };
-    iconGrid.appendChild(icon);
-  });
+// Обработчик события для кнопки сохранения изображения
+document.getElementById("save-png").addEventListener("click", function () {
+  save("wave-logo.png"); // Сохраняем canvas в формате PNG с именем "output"
 });
-
-function selectIcon(iconName) {
-  console.log("Selected icon:", iconName);
-  closeModal();
-}
-
-displayIcons();
