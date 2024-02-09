@@ -1,3 +1,5 @@
+let iconsData; // Перемещаем переменную в глобальную область видимости
+
 function displayIcons(iconsData) {
   const iconGrid = document.getElementById("iconGrid");
   iconGrid.innerHTML = '';
@@ -29,7 +31,7 @@ function closeModal() {
 fetch('iconsCategories.json')
   .then(response => response.json())
   .then(data => {
-    const iconsData = Object.entries(data); // Преобразование объекта в массив пар [ключ, значение]
+    iconsData = Object.entries(data); // Преобразование объекта в массив пар [ключ, значение]
     displayIcons(iconsData); // Отображение иконок после загрузки
   })
   .catch(error => {
