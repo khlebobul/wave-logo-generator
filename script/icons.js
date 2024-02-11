@@ -5,8 +5,7 @@ function displayIcons(iconsData) {
   iconGrid.innerHTML = '';
 
   iconsData.forEach(function(iconEntry) {
-    const iconName = iconEntry[0];
-    const categories = iconEntry[1];
+    const iconName = iconEntry;
 
     const icon = document.createElement("i");
     icon.classList.add("icon");
@@ -28,10 +27,10 @@ function closeModal() {
 }
 
 // Загрузка иконок из JSON-файла
-fetch('iconsCategories.json')
+fetch('icons.json')
   .then(response => response.json())
   .then(data => {
-    iconsData = Object.entries(data); // Преобразование объекта в массив пар [ключ, значение]
+    iconsData = Object.keys(data); // Получаем только названия иконок
     displayIcons(iconsData); // Отображение иконок после загрузки
   })
   .catch(error => {
@@ -40,8 +39,7 @@ fetch('iconsCategories.json')
 
 document.getElementById("searchIconInput").addEventListener("input", function() {
   const searchQuery = this.value.toLowerCase();
-  const filteredIconsData = iconsData.filter(function(iconEntry) {
-    const iconName = iconEntry[0];
+  const filteredIconsData = iconsData.filter(function(iconName) {
     return iconName.includes(searchQuery);
   });
 
