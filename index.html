@@ -165,17 +165,18 @@
             style="display: none;"
             />
             <button type="button" onclick="openModal()">Pick an icon</button>
-              <div id="iconPickerModal" class="modal">
-                <div class="modal-content">
-                  <span class="close" onclick="closeModal()"><i data-lucide="x"></i></span>
-                  <input type="text" id="searchIconInput" placeholder="Search icon...">
-                  <div id="iconGrid" class="icon-grid">
-                  </div>
-                </div>
-              </div>
+              
             <button id="save-png">Download PNG</button>
          </div> 
       </div>
+      <div id="iconPickerModal" class="modal">
+         <div class="modal-content">
+           <span class="close" onclick="closeModal()"><i data-lucide="x"></i></span>
+           <input type="text" id="searchIconInput" placeholder="Search icon...">
+           <div id="iconGrid" class="icon-grid">
+           </div>
+         </div>
+       </div>
    </body>
    
    <script src="script/sketch.js"></script>
