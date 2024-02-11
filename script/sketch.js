@@ -45,8 +45,6 @@ function preload() {
   chooseShapeColor.addEventListener("change", function () {
     document.querySelector("#frame").style.shapeColor = chooseShapeColor.value;
   });
-
-  
 }
 
 function getImgData() {

@@ -1,23 +1,38 @@
-let iconsData; // Переместим переменную в глобальную область видимости
-let displayedIcons = []; // Переместим переменную в глобальную область видимости
+document.addEventListener("DOMContentLoaded", function() {
+  var iconGrid = document.getElementById("iconGrid");
+  
+  // Создаем и добавляем элементы иконок для всех иконок из набора Lucide Icons
+  for (var iconName in lucide) {
+    var iconNode = lucide[iconName];
+    var svgString = iconNodeToString(iconNode);
+    // Создаем элемент SVG
+    var svgElement = createSVGElement(svgString);
+    // Создаем элемент div и добавляем в него SVG
+    var iconDiv = document.createElement("div");
+    iconDiv.classList.add("icon-wrapper");
+    iconDiv.setAttribute("data-lucide", iconName.toLowerCase()); // Устанавливаем атрибут с названием иконки в нижнем регистре
+    iconDiv.appendChild(svgElement);
+    // Добавляем div в контейнер
+    iconGrid.appendChild(iconDiv);
+  }
+});
 
-function displayIcons(iconsData) {
-  const iconGrid = document.getElementById("iconGrid");
-  iconGrid.innerHTML = '';
+function iconNodeToString(iconNode) {
+  var tag = iconNode[0];
+  var attrs = "";
+  if (iconNode[1]) {
+    attrs = Object.entries(iconNode[1])
+      .map(([key, value]) => `${key}="${value}"`)
+      .join(" ");
+  }
+  var children = (iconNode[2] || []).map(childNode => iconNodeToString(childNode)).join("");
+  return `<${tag} ${attrs}>${children}</${tag}>`;
+}
 
-  displayedIcons = []; // Очищаем массив перед отображением иконок
-
-  iconsData.forEach(function(iconEntry) {
-    const iconName = iconEntry[0]; // Получаем название иконки
-    const icon = document.createElement("div"); // Создаем элемент div для иконки
-    icon.classList.add("icon");
-    icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="${iconName}" class="lucide lucide-${iconName} icon"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M17 12h-2l-2 5-2 10-2 5H7"></path></svg>`;
-    icon.onclick = function() {
-      selectIcon(iconName);
-    };
-    iconGrid.appendChild(icon);
-    displayedIcons.push(icon);
-  });
+function createSVGElement(svgString) {
+  var div = document.createElement("div");
+  div.innerHTML = svgString.trim();
+  return div.firstChild;
 }
 
 function openModal() {
@@ -28,28 +43,25 @@ function closeModal() {
   document.getElementById("iconPickerModal").style.display = "none";
 }
 
-// Загрузка иконок из JSON-файла
-fetch('icons.json')
-  .then(response => response.json())
-  .then(data => {
-    iconsData = Object.entries(data); // Преобразуем объект в массив ключ-значение
-    displayIcons(iconsData); // Отображаем иконки после загрузки
-  })
-  .catch(error => {
-    console.error('Ошибка загрузки иконок:', error);
-  });
-
 document.getElementById("searchIconInput").addEventListener("input", function() {
-  const searchQuery = this.value.toLowerCase();
-  const filteredIconsData = iconsData.filter(function(iconEntry) {
-    const iconName = iconEntry[0]; // Получаем название иконки
-    return iconName.includes(searchQuery); // Возвращаем true, если название иконки содержит поисковой запрос
+  var searchTerm = this.value.toLowerCase();
+  var icons = document.querySelectorAll("#iconGrid .icon-wrapper");
+  icons.forEach(function(icon) {
+    var iconName = icon.getAttribute("data-lucide");
+    if (iconName && iconName.includes(searchTerm)) {
+      icon.style.display = "inline-block";
+    } else {
+      icon.style.display = "none";
+    }
   });
-
-  displayIcons(filteredIconsData); // Обновляем отображение иконок
 });
 
-function selectIcon(iconName) {
-  console.log("Выбрана иконка:", iconName);
-  closeModal();
-}
+document.getElementById("iconGrid").addEventListener("click", function(event) {
+  var clickedIcon = event.target.closest(".icon-wrapper");
+  if (clickedIcon) {
+    var iconName = clickedIcon.getAttribute("data-lucide");
+    if (iconName) {
+      console.log("Выбрана иконка:", iconName);
+    }
+  }
+});
