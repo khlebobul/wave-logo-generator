@@ -17,6 +17,7 @@ let chooseWaveColor;
 let chooseMargin;
 let chooseWidth;
 let chooseShapeColor;
+let dropArea;
 
 function preload() {
   // Переменные для элементов управления
@@ -28,6 +29,7 @@ function preload() {
   chooseMargin = document.getElementById("choose-margin");
   chooseWidth = document.getElementById("choose-width");
   chooseShapeColor = document.getElementById("choose-shape-color");
+  dropArea = document.getElementById("drop-area");
 
   // Обработчики событий для изменения значений
   chooseFile.addEventListener("change", function () {
@@ -56,6 +58,7 @@ function getImgData() {
     fileReader.readAsDataURL(files);
     fileReader.addEventListener("load", function () {
       img = loadImage(`${this.result}`);
+      hideDropArea();
     });
   }
 }
@@ -64,6 +67,22 @@ function setup() {
   createCanvas(600, 600); // Canvas size
   blurred = 0;
   blurRadius = 5;
+
+  // Обработчик события для dragover (когда файл перетаскивается над областью)
+  dropArea.addEventListener("dragover", function (event) {
+    event.preventDefault(); // Предотвращаем стандартное поведение браузера
+  });
+
+  // Обработчик события для drop (когда файл отпускается в области)
+  dropArea.addEventListener("drop", function (event) {
+    event.preventDefault(); // Предотвращаем стандартное поведение браузера
+
+    // Получаем файл из события drop
+    const file = event.dataTransfer.files[0];
+
+    // Загружаем изображение
+    loadImgFromFile(file);
+  });
 }
 
 function draw() {
@@ -177,6 +196,29 @@ function mouseDragged() {
     previousMouseX = mouseX;
     previousMouseY = mouseY;
   }
+}
+
+// Функция для загрузки изображения из файла
+function loadImgFromFile(file) {
+  isVanishing = false;
+  blurRadius = 3;
+
+  const fileReader = new FileReader();
+  fileReader.readAsDataURL(file);
+  fileReader.addEventListener("load", function () {
+    img = loadImage(`${this.result}`);
+    hideDropArea();
+  });
+}
+
+// Функция для скрытия области перетаскивания файла
+function hideDropArea() {
+  dropArea.style.display = "none";
+}
+
+// Функция для отображения области перетаскивания файла
+function showDropArea() {
+  dropArea.style.display = "block";
 }
 
 // Обработчик события для кнопки сохранения изображения

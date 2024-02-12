@@ -157,6 +157,43 @@ button {
     margin-top: 10px;
 }
 
+/* Drag and Drop File Uploading */
+  
+  #choose-file {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  #drop-area {
+    color: white;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 300px;
+    transform: translate(-50%, -50%);
+    width: 500px; 
+    height: 500px; 
+  }
+
+
+  .drop-area {
+    display: block;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
 .file-button:hover,
 button:hover {
     background: rgba(255, 255, 255, 0.2);
