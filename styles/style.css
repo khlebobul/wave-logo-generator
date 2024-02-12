@@ -160,21 +160,21 @@ button {
 /* Drag and Drop File Uploading */
 
 .frame {
-    position: relative; /* Добавлено */
+    position: relative; 
 }
 
 #drop-area {
-    color: white;
+    color: #ccc;
     position: absolute;
-    top: 45%; /* Изменено */
-    left: 50%; /* Изменено */
+    top: 45%; 
+    left: 50%; 
     border: 2px dashed #ccc;
     border-radius: 10px;
     width: 500px;
     height: 500px;
     text-align: center;
-    line-height: 500px; /* Изменено */
-    transform: translate(-50%, -50%); /* Добавлено */
+    line-height: 500px; 
+    transform: translate(-50%, -50%); 
 }
 
 .drop-area {
