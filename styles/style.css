@@ -158,41 +158,32 @@ button {
 }
 
 /* Drag and Drop File Uploading */
-  
-  #choose-file {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-  }
-  
-  #drop-area {
+
+.frame {
+    position: relative; /* Добавлено */
+}
+
+#drop-area {
     color: white;
     position: absolute;
-    top: 45%;
-    left: 50%;
+    top: 45%; /* Изменено */
+    left: 50%; /* Изменено */
     border: 2px dashed #ccc;
     border-radius: 10px;
-    width: 100%;
-    height: 100%;
+    width: 500px;
+    height: 500px;
     text-align: center;
-    line-height: 300px;
-    transform: translate(-50%, -50%);
-    width: 500px; 
-    height: 500px; 
-  }
+    line-height: 500px; /* Изменено */
+    transform: translate(-50%, -50%); /* Добавлено */
+}
 
-
-  .drop-area {
+.drop-area {
     display: block;
-  }
-  
-  .hidden {
+}
+
+.hidden {
     display: none;
-  }
+}
 
 .file-button:hover,
 button:hover {
@@ -232,7 +223,7 @@ button:hover {
     margin: 10px auto;
     padding: 20px;
     width: 90%;
-    
+
 }
 
 .close {
@@ -272,7 +263,8 @@ button:hover {
     margin: 20px;
 }
 
-#searchIconInput::placeholder, #searchIconInput {
+#searchIconInput::placeholder,
+#searchIconInput {
     padding: 3px;
     padding-left: 5px;
     font-family: 'Gluten', cursive;
