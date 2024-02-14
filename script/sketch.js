@@ -93,3 +93,8 @@ document.getElementById('choose-number-of-lines').addEventListener('input', func
   lines = parseInt(event.target.value);
   amp = height / lines; // Recalculate amplitude based on new number of lines
 });
+
+// Function to handle number of points per line selection
+document.getElementById('choose-points-per-line').addEventListener('input', function(event) {
+  pointsPerLine = parseInt(event.target.value);
+});
