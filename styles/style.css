@@ -88,7 +88,8 @@ h1 {
 #choose-icon-degrees,
 #choose-waves-degrees,
 #choose-number-of-lines,
-#choose-points-per-line {
+#choose-points-per-line,
+#choose-line-width {
     width: 300px;
 }
 

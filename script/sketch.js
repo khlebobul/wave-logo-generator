@@ -4,6 +4,7 @@ let pointsPerLine = 100; // Number of points per line
 let amp;
 let bgColor;
 let lineColor;
+let lineWidth = 2; // Default line width
 
 function setup() {
   createCanvas(600, 600);
@@ -17,6 +18,7 @@ function draw() {
   background(bgColor); // Set background color
   if (img) {
     stroke(lineColor); // Set line color
+    strokeWeight(lineWidth); // Set line width
     drawLines();
   }
 }
@@ -86,6 +88,11 @@ document.getElementById('choose-background-color').addEventListener('input', fun
 // Function to handle line color selection
 document.getElementById('choose-wave-color').addEventListener('input', function(event) {
   lineColor = color(event.target.value);
+});
+
+// Function to handle line width selection
+document.getElementById('choose-line-width').addEventListener('input', function(event) {
+  lineWidth = parseInt(event.target.value);
 });
 
 // Function to handle number of lines selection
