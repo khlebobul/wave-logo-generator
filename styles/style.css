@@ -86,7 +86,8 @@ h1 {
 #choose-margin,
 #choose-width,
 #choose-icon-degrees,
-#choose-waves-degrees {
+#choose-waves-degrees,
+#choose-number-of-lines {
     width: 300px;
 }
 
@@ -98,7 +99,8 @@ h1 {
 
 #choose-shape-color,
 #choose-wave-color,
-#choose-background-color {
+#choose-background-color
+{
     width: 200px;
     border-style: none;
     background-color: #ffffff00;

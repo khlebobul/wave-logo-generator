@@ -87,3 +87,9 @@ document.getElementById('choose-background-color').addEventListener('input', fun
 document.getElementById('choose-wave-color').addEventListener('input', function(event) {
   lineColor = color(event.target.value);
 });
+
+// Function to handle number of lines selection
+document.getElementById('choose-number-of-lines').addEventListener('input', function(event) {
+  lines = parseInt(event.target.value);
+  amp = height / lines; // Recalculate amplitude based on new number of lines
+});

@@ -36,35 +36,20 @@
                />
          </div>
          <div class="between"></div>
-         <p1 class="range-lable">Distance</p1>
+         <p1 class="range-lable">Number of lines</p1>
          <div class="range_input">
-            <label for="choose-dist"></label>
-            <input
-               type="range"
-               id="choose-dist"
-               name="choose-dist"
-               value="5"
-               min="2"
-               max="20"
-               step="1"
-               oninput="this.nextElementSibling.value  = this.value"
-               />
-            <output>5</output>
-         </div>
-         <p1 class="range-lable">Amplutide</p1>
-         <div class="range_input">
-            <label for="choose-height"></label>
-            <input
-               type="range"
-               id="choose-height"
-               name="choose-height"
-               value="5"
-               min="-20"
-               max="20"
-               step="1"
-               oninput="this.nextElementSibling.value  = this.value"
-               />
-            <output>5</output>
+           <label for="choose-number-of-lines"></label>
+           <input
+             type="range"
+             id="choose-number-of-lines" 
+             name="choose-number-of-lines"
+             value="100"
+             min="10"
+             max="200"
+             step="10"
+             oninput="this.nextElementSibling.value = this.value"
+           />
+           <output>100</output>
          </div>
          <p1 class="range-lable">Waves width</p1>
          <div class="range_input">
