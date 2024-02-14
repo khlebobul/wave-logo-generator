@@ -3,17 +3,20 @@ let lines = 100; // Number of horizontal lines
 let pointsPerLine = 100; // Number of points per line
 let amp;
 let bgColor;
+let lineColor;
 
 function setup() {
   createCanvas(600, 600);
   amp = height / lines;
   noFill();
-  bgColor = color('ф#2541E1'); // Default background color
+  bgColor = color('#2541E1'); // Default background color
+  lineColor = color('#FFFFFF'); // Default line color
 }
 
 function draw() {
   background(bgColor); // Set background color
   if (img) {
+    stroke(lineColor); // Set line color
     drawLines();
   }
 }
@@ -78,4 +81,9 @@ document.getElementById('choose-file').addEventListener('change', function(event
 // Function to handle background color selection
 document.getElementById('choose-background-color').addEventListener('input', function(event) {
   bgColor = color(event.target.value);
+});
+
+// Function to handle line color selection
+document.getElementById('choose-wave-color').addEventListener('input', function(event) {
+  lineColor = color(event.target.value);
 });
