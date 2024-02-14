@@ -173,7 +173,7 @@ button {
     width: 500px;
     height: 500px;
     text-align: center;
-    line-height: 500px; 
+    line-height: 500px; /* text vertical centering */
     transform: translate(-50%, -50%); 
 }
 

@@ -1,227 +1,81 @@
 let img;
-let blurred;
-let blurRadius;
-let isVanishing;
-let startingStroke;
-
-let offsetX = 0; // Начальное горизонтальное смещение
-let offsetY = 0; // Начальное вертикальное смещение
-
-let isDragging = false; // Переменная для отслеживания, зажата ли кнопка мыши
-
-let chooseFile;
-let chooseBackgroundColor;
-let chooseDist;
-let chooseHeight;
-let chooseWaveColor;
-let chooseMargin;
-let chooseWidth;
-let chooseShapeColor;
-let dropArea;
-
-function preload() {
-  // Переменные для элементов управления
-  chooseFile = document.getElementById("choose-file");
-  chooseBackgroundColor = document.getElementById("choose-background-color");
-  chooseDist = document.getElementById("choose-dist");
-  chooseHeight = document.getElementById("choose-height");
-  chooseWaveColor = document.getElementById("choose-wave-color");
-  chooseMargin = document.getElementById("choose-margin");
-  chooseWidth = document.getElementById("choose-width");
-  chooseShapeColor = document.getElementById("choose-shape-color");
-  dropArea = document.getElementById("drop-area");
-
-  // Обработчики событий для изменения значений
-  chooseFile.addEventListener("change", function () {
-    getImgData();
-  });
-
-  chooseBackgroundColor.addEventListener("change", function () {
-    document.querySelector("#frame").style.backgroundColor = chooseBackgroundColor.value;
-  });
-
-  chooseWaveColor.addEventListener("change", function () {
-    document.querySelector("#frame").style.waveColor = chooseWaveColor.value;
-  });
-
-  chooseShapeColor.addEventListener("change", function () {
-    document.querySelector("#frame").style.shapeColor = chooseShapeColor.value;
-  });
-}
-
-function getImgData() {
-  isVanishing = false;
-  blurRadius = 3;
-  const files = chooseFile.files[0];
-  if (files) {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(files);
-    fileReader.addEventListener("load", function () {
-      img = loadImage(`${this.result}`);
-      hideDropArea();
-    });
-  }
-}
+let lines = 100; // Number of horizontal lines
+let pointsPerLine = 100; // Number of points per line
+let amp;
+let bgColor;
 
 function setup() {
-  createCanvas(600, 600); // Canvas size
-  blurred = 0;
-  blurRadius = 5;
-
-  // Обработчик события для dragover (когда файл перетаскивается над областью)
-  dropArea.addEventListener("dragover", function (event) {
-    event.preventDefault(); // Предотвращаем стандартное поведение браузера
-  });
-
-  // Обработчик события для drop (когда файл отпускается в области)
-  dropArea.addEventListener("drop", function (event) {
-    event.preventDefault(); // Предотвращаем стандартное поведение браузера
-
-    // Получаем файл из события drop
-    const file = event.dataTransfer.files[0];
-
-    // Загружаем изображение
-    loadImgFromFile(file);
-  });
+  createCanvas(600, 600);
+  amp = height / lines;
+  noFill();
+  bgColor = color('ф#2541E1'); // Default background color
 }
 
 function draw() {
-  background(`${chooseBackgroundColor.value}`);
-
+  background(bgColor); // Set background color
   if (img) {
-    if (blurred == 0 || isVanishing) {
-      img.filter(BLUR, blurRadius);
-      blurred = 1;
-    }
-
-    img.resize(200, 200);
-
-    let w = width / img.width;
-    let h = height / img.height;
-
-    const hMap = [...Array(img.width)].map((e) => Array(img.height));
-
-    img.loadPixels();
-    for (let i = 0; i < img.height; i++) {
-      for (let j = 0; j < img.width; j++) {
-        const pixelIndex = (i * img.width + j) * 4;
-        const r = img.pixels[pixelIndex];
-        const g = img.pixels[pixelIndex + 1];
-        const b = img.pixels[pixelIndex + 2];
-        //heatMap
-        hMap[j][i] = (r + g + b) / 3; // Shape volume
-      }
-    }
-
-    startingStroke = int(chooseWidth.value); // Wave width
-
-    var str = startingStroke;
-
-    var band = int(chooseMargin.value); // Margin
-
-    var waveDist = int(chooseDist.value); // Wave distance
-
-    var waveHeight = int(chooseHeight.value); // Shape volume
-
-    for (let i = 0 + band; i < img.height - band; i += waveDist) {
-      noFill();
-      strokeWeight(str);
-
-      stroke(`${chooseWaveColor.value}`);
-
-      beginShape();
-      for (let j = 0; j < img.width; j++) {
-        var y = map(hMap[j][i], 255, 0, 0, waveHeight);
-        vertex(j * w + offsetX, i * h + y + offsetY);
-      }
-
-      endShape();
-      str -= 0;
-    }
-
-    str = startingStroke;
-
-    for (let i = 0 + band; i < img.height - band; i += waveDist) {
-      noFill();
-      strokeWeight(str);
-
-      stroke(`${chooseShapeColor.value}`);
-
-      var shapeEnded = 1;
-      beginShape();
-      for (let j = 0; j < img.width; j++) {
-        if (hMap[j][i] > 200) {
-          if (shapeEnded == 1) {
-            shapeEnded = 0;
-            beginShape();
-          }
-          var diff = map(hMap[j][i], 255, 0, 0, waveHeight);
-          vertex(j * w + offsetX, i * h + diff + offsetY);
-        } else {
-          endShape();
-          shapeEnded = 1;
-        }
-      }
-
-      endShape();
-      str -= 0;
-    }
+    drawLines();
   }
 }
 
-// Функция для начала перемещения элемента при зажатии кнопки мыши
-function mousePressed() {
-  // Проверяем, находится ли курсор мыши в пределах canvas
-  if (mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
-    isDragging = true;
-    // Устанавливаем предыдущие координаты мыши
-    previousMouseX = mouseX;
-    previousMouseY = mouseY;
+function drawLines() {
+  let lineHeight = height / (lines + 1);
+  for (let i = 1; i <= lines; i++) {
+    let y = i * lineHeight;
+    beginShape();
+    drawPoints(y);
+    endShape();
   }
 }
 
-// Функция для окончания перемещения элемента при отпускании кнопки мыши
-function mouseReleased() {
-  isDragging = false;
-}
-
-// Функция для изменения offsetX и offsetY с помощью мыши только при зажатой кнопке
-function mouseDragged() {
-  // Проверяем, зажата ли кнопка мыши
-  if (isDragging) {
-    // Обновляем смещение только при зажатой кнопке мыши
-    offsetX += mouseX - previousMouseX;
-    offsetY += mouseY - previousMouseY;
-    // Обновляем предыдущие координаты мыши
-    previousMouseX = mouseX;
-    previousMouseY = mouseY;
+function drawPoints(y) {
+  let pointSpacing = width / (pointsPerLine + 1);
+  for (let i = 1; i <= pointsPerLine; i++) {
+    let x = i * pointSpacing;
+    let offset = getVerticalOffset(x, y);
+    vertex(x, y + offset);
   }
 }
 
-// Функция для загрузки изображения из файла
-function loadImgFromFile(file) {
-  isVanishing = false;
-  blurRadius = 3;
-
-  const fileReader = new FileReader();
-  fileReader.readAsDataURL(file);
-  fileReader.addEventListener("load", function () {
-    img = loadImage(`${this.result}`);
-    hideDropArea();
-  });
+function getVerticalOffset(x, y) {
+  let [imgX, imgY] = canvasToImageCoords(x, y);
+  imgX = floor(imgX);
+  imgY = floor(imgY);
+  if (imgX < 0 || imgX > img.width - 1 || imgY < 0 || imgY > img.height - 1)
+    return 0;
+  let index = (imgY * img.width + imgX) * 4; // 4 channels (RGBA)
+  let redValue = img.pixels[index];
+  return map(redValue, 0, 255, -amp, 0);
 }
 
-// Функция для скрытия области перетаскивания файла
-function hideDropArea() {
-  dropArea.style.display = "none";
+function canvasToImageCoords(x, y) {
+  x -= width / 2;
+  y -= height / 2;
+  let offsetX = (mouseX / width - 0.5) * width;
+  let scale_ = (mouseY / height - 0.5) * 5;
+  x -= offsetX;
+  x /= scale_;
+  y /= scale_;
+  x += img.width / 2;
+  y += img.height / 2;
+  return [x, y];
 }
 
-// Функция для отображения области перетаскивания файла
-function showDropArea() {
-  dropArea.style.display = "block";
-}
+// Function to handle file selection
+document.getElementById('choose-file').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      img = loadImage(event.target.result, function() {
+        img.loadPixels();
+      });
+    };
+    reader.readAsDataURL(file);
+  }
+});
 
-// Обработчик события для кнопки сохранения изображения
-document.getElementById("save-png").addEventListener("click", function () {
-  save("wave-logo.png"); // Сохраняем canvas в формате PNG с именем "output"
+// Function to handle background color selection
+document.getElementById('choose-background-color').addEventListener('input', function(event) {
+  bgColor = color(event.target.value);
 });
