@@ -86,10 +86,11 @@ h1 {
 #choose-margin,
 #choose-width,
 #choose-icon-degrees,
-#choose-waves-degrees,
+#choose-lines-degrees,
 #choose-number-of-lines,
 #choose-points-per-line,
-#choose-line-width {
+#choose-line-width, 
+#choose-amplitude {
     width: 300px;
 }
 

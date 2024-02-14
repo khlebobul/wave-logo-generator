@@ -8,7 +8,7 @@ let lineWidth = 2; // Default line width
 
 function setup() {
   createCanvas(600, 600);
-  amp = height / lines;
+  amp =  height / lines;
   noFill();
   bgColor = color('#2541E1'); // Default background color
   lineColor = color('#FFFFFF'); // Default line color
@@ -98,7 +98,6 @@ document.getElementById('choose-line-width').addEventListener('input', function(
 // Function to handle number of lines selection
 document.getElementById('choose-number-of-lines').addEventListener('input', function(event) {
   lines = parseInt(event.target.value);
-  amp = height / lines; // Recalculate amplitude based on new number of lines
 });
 
 // Function to handle number of points per line selection
