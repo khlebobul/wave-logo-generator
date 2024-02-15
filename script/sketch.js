@@ -104,3 +104,8 @@ document.getElementById('choose-number-of-lines').addEventListener('input', func
 document.getElementById('choose-points-per-line').addEventListener('input', function(event) {
   pointsPerLine = parseInt(event.target.value);
 });
+
+// Function to handle save as PNG
+document.getElementById('save-png').addEventListener('click', function() {
+  saveCanvas('myCanvas', 'png');
+});
