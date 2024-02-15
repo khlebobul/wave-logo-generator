@@ -79,21 +79,22 @@
                step=".5"
                oninput="this.nextElementSibling.value  = this.value"
                />
-            <output>10</output>
+            <output>2</output>
          </div>
-         <p1 class="range-lable">Image / Icon size</p1>
+         <p1 class="range-lable">Image / Icon scale</p1>
          <div class="range_input">
-            <label for="choose-icon-degrees"></label>
+            <label for="choose-icon-size"></label>
             <input
                type="range"
-               id="choose-icon-degrees"
-               name="choose-icon-degrees"
-               value="24"
-               min="0"
+               id="choose-icon-size"
+               name="choose-icon-size"
+               value="1"
+               min="1"
                max="50"
-               step="1"
+               step=".05"
+               oninput="this.nextElementSibling.value  = this.value"
                />
-            <output>24</output>
+            <output>1</output>
          </div>
          <p1 class="range-lable">Rotate icon</p1>
          <div class="range_input">

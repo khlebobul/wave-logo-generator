@@ -90,7 +90,8 @@ h1 {
 #choose-number-of-lines,
 #choose-points-per-line,
 #choose-line-width, 
-#choose-amplitude {
+#choose-amplitude,
+#choose-icon-size {
     width: 300px;
 }
 

@@ -5,6 +5,7 @@ let amp;
 let bgColor;
 let lineColor;
 let lineWidth = 2; // Default line width
+let imgScale = 1; // Default image scale
 
 function setup() {
   createCanvas(600, 600);
@@ -56,9 +57,7 @@ function getVerticalOffset(x, y) {
 function canvasToImageCoords(x, y) {
   x -= width / 2;
   y -= height / 2;
-  let offsetX = (mouseX / width - 0.5) * width;
-  let scale_ = (mouseY / height - 0.5) * 5;
-  x -= offsetX;
+  let scale_ = imgScale; // Use imgScale for scaling, remove mouse-based scaling
   x /= scale_;
   y /= scale_;
   x += img.width / 2;
@@ -105,7 +104,12 @@ document.getElementById('choose-points-per-line').addEventListener('input', func
   pointsPerLine = parseInt(event.target.value);
 });
 
-// Function to handle save as PNG
+// Function to handle image scale selection
+document.getElementById('choose-icon-size').addEventListener('input', function(event) {
+  imgScale = parseFloat(event.target.value);
+});
+
+// Function to handle PNG download
 document.getElementById('save-png').addEventListener('click', function() {
   saveCanvas('myCanvas', 'png');
 });
