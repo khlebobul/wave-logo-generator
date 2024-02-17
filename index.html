@@ -103,9 +103,12 @@
          </p>
       </div>
       <div class="frame">
-         <main>
-            
+         <main> 
          </main>
+         <input type="file" id="choose-file" name="choose-file" accept="image/*" style="display: none;"/>
+         <div id="drop-area">
+         <p class="drop-area-text">Drag & Drop file here <br>or<br> Pick an Icon</p> 
+         </div>
          <div class="buttons">
           <label for="choose-file" class="file-button">Choose file</label>
          <input
@@ -115,6 +118,7 @@
             accept="image/*"
             style="display: none;"
             />
+
             <button type="button" onclick="openModal()">Pick an icon</button>
               
             <button id="save-png">Download PNG</button>
@@ -129,13 +133,13 @@
          </div>
        </div>
    </body>
-   <!-- script p5.js -->
-   <script src="script/sketch.js"></script>
    <!-- scripts for icons -->
    <script src="script/icons.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
    <script src="path/to/lucide/umd/lucide.js"></script>
    <script src="https://unpkg.com/lucide@latest"></script>
+   <!-- script p5.js -->
+   <script src="script/sketch.js"></script>
     <script>
       lucide.createIcons();
     </script>

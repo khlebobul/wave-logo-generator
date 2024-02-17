@@ -172,20 +172,24 @@ button {
 #drop-area {
     color: #ccc;
     position: absolute;
-    top: 45%; 
+    top: 46%; 
     left: 50%; 
     border: 2px dashed #ccc;
     border-radius: 10px;
     width: 500px;
     height: 500px;
-    text-align: center;
-    line-height: 500px; /* text vertical centering */
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.drop-area {
-    display: block;
+.drop-area-text {
+    width: 90%;
+    text-align: center;
+    line-height: 25px;
 }
+
 
 .hidden {
     display: none;
@@ -276,4 +280,8 @@ button:hover {
     font-family: 'Gluten', cursive;
     font-weight: 300;
     font-size: 15px;
+}
+
+.p5Canvas {
+    border-radius: 10px;
 }

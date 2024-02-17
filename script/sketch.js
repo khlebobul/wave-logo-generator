@@ -79,6 +79,33 @@ document.getElementById('choose-file').addEventListener('change', function(event
   }
 });
 
+// Function to handle file drop
+document.getElementById('drop-area').addEventListener('drop', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const file = event.dataTransfer.files[0];
+    loadImageFromFile(file);
+});
+
+// Function to handle drag over drop area
+document.getElementById('drop-area').addEventListener('dragover', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+});
+
+// Function to load image from file
+function loadImageFromFile(file) {
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            img = loadImage(event.target.result, function() {
+                img.loadPixels();
+            });
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
 // Function to handle background color selection
 document.getElementById('choose-background-color').addEventListener('input', function(event) {
   bgColor = color(event.target.value);
@@ -111,5 +138,5 @@ document.getElementById('choose-icon-size').addEventListener('input', function(e
 
 // Function to handle PNG download
 document.getElementById('save-png').addEventListener('click', function() {
-  saveCanvas('myCanvas', 'png');
+  saveCanvas('wave-logo-generator', 'png');
 });
