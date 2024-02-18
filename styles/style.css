@@ -190,11 +190,6 @@ button {
     line-height: 25px;
 }
 
-
-.hidden {
-    display: none;
-}
-
 .file-button:hover,
 button:hover {
     background: rgba(255, 255, 255, 0.2);
