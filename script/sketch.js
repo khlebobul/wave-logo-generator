@@ -6,6 +6,7 @@ let bgColor;
 let lineColor;
 let lineWidth = 2; // Default line width
 let imgScale = 1; // Default image scale
+let dropArea;
 
 function setup() {
   createCanvas(600, 600);
@@ -140,3 +141,21 @@ document.getElementById('choose-icon-size').addEventListener('input', function(e
 document.getElementById('save-png').addEventListener('click', function() {
   saveCanvas('wave-logo-generator', 'png');
 });
+
+// drop-area function
+
+// Event handler for dragover (when a file is dragged over the area)
+dropArea.addEventListener("dragover", function (event) {
+  event.preventDefault(); // Prevent the default behavior of the browser
+  });
+  
+  // Event handler for drop (when a file is dropped in the area)
+  dropArea.addEventListener("drop", function (event) {
+  event.preventDefault(); // Prevent the default behavior of the browser
+  
+  // Get the file from the drop event
+  const file = event.dataTransfer.files[0];
+  
+  // Load the image from the file
+  loadImgFromFile(file);
+  });
