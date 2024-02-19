@@ -74,6 +74,7 @@ document.getElementById('choose-file').addEventListener('change', function(event
     reader.onload = function(event) {
       img = loadImage(event.target.result, function() {
         img.loadPixels();
+        document.getElementById('drop-area').style.opacity = "0";
       });
     };
     reader.readAsDataURL(file);
