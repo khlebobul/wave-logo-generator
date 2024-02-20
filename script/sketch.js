@@ -100,17 +100,30 @@ document.getElementById('drop-area').addEventListener('dragover', function(event
 // Function to load image from file
 function loadImageFromFile(file) {
   if (file) {
+    const extension = file.name.split('.').pop().toLowerCase();
+    if (extension === 'svg') {
       const xhr = new XMLHttpRequest();
       xhr.onload = function() {
-          const svgContent = xhr.responseText;
-          console.log("SVG content:", svgContent);
-          // Далее вы можете использовать это содержимое SVG для отображения на канвасе или других целях
+        const svgContent = xhr.responseText;
+        console.log("SVG content:", svgContent);
+        // You can use this SVG content for displaying on the canvas or other purposes
       };
       xhr.open("GET", URL.createObjectURL(file));
       xhr.send();
+    } else if (extension === 'png' || extension === 'jpg' || extension === 'jpeg') {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        img = loadImage(event.target.result, function() {
+          img.loadPixels();
+          document.getElementById('drop-area').style.opacity = "0";
+        });
+      };
+      reader.readAsDataURL(file);
+    } else {
+      console.log("Unsupported file format");
+    }
   }
 }
-
 
 
 // Function to handle background color selection
