@@ -10,7 +10,7 @@ let dropArea;
 
 function setup() {
   createCanvas(600, 600);
-  amp =  height / lines;
+  amp = height / lines;
   noFill();
   bgColor = color('#2541E1'); // Default background color
   lineColor = color('#FFFFFF'); // Default line color
@@ -83,32 +83,35 @@ document.getElementById('choose-file').addEventListener('change', function(event
 
 // Function to handle file drop
 document.getElementById('drop-area').addEventListener('drop', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    const file = event.dataTransfer.files[0];
-    loadImageFromFile(file);
+  event.preventDefault();
+  event.stopPropagation();
+  const file = event.dataTransfer.files[0];
+  loadImageFromFile(file);
 
-    document.getElementById('drop-area').style.opacity = "0";
+  document.getElementById('drop-area').style.opacity = "0";
 });
 
 // Function to handle drag over drop area
 document.getElementById('drop-area').addEventListener('dragover', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
+  event.preventDefault();
+  event.stopPropagation();
 });
 
 // Function to load image from file
 function loadImageFromFile(file) {
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(event) {
-            img = loadImage(event.target.result, function() {
-                img.loadPixels();
-            });
-        };
-        reader.readAsDataURL(file);
-    }
+  if (file) {
+      const xhr = new XMLHttpRequest();
+      xhr.onload = function() {
+          const svgContent = xhr.responseText;
+          console.log("SVG content:", svgContent);
+          // Далее вы можете использовать это содержимое SVG для отображения на канвасе или других целях
+      };
+      xhr.open("GET", URL.createObjectURL(file));
+      xhr.send();
+  }
 }
+
+
 
 // Function to handle background color selection
 document.getElementById('choose-background-color').addEventListener('input', function(event) {
@@ -144,3 +147,29 @@ document.getElementById('choose-icon-size').addEventListener('input', function(e
 document.getElementById('save-png').addEventListener('click', function() {
   saveCanvas('wave-logo-generator', 'png');
 });
+
+// Function to convert SVG to JPEG
+function convertSVGtoJPEG(svgElement) {
+  // Log SVG content to console
+  console.log("SVG content:", svgElement.outerHTML);
+
+  var svgString = new XMLSerializer().serializeToString(svgElement);
+
+  var canvas = document.createElement("canvas");
+  var ctx = canvas.getContext("2d");
+  ctx.fillStyle = "white";
+  canvas.width = svgElement.getAttribute("width");
+  canvas.height = svgElement.getAttribute("height");
+  document.body.appendChild(canvas); // Append canvas to body temporarily for rendering
+
+  canvg(canvas, svgString, {
+    renderCallback: function() {
+      img = new Image();
+      img.src = canvas.toDataURL("image/jpeg", 1.0);
+      img.onload = function() {
+        // Remove canvas from body after image is loaded
+        document.body.removeChild(canvas);
+      };
+    }
+  });
+}
