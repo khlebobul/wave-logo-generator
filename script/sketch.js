@@ -160,29 +160,3 @@ document.getElementById('choose-icon-size').addEventListener('input', function(e
 document.getElementById('save-png').addEventListener('click', function() {
   saveCanvas('wave-logo-generator', 'png');
 });
-
-// Function to convert SVG to JPEG
-function convertSVGtoJPEG(svgElement) {
-  // Log SVG content to console
-  console.log("SVG content:", svgElement.outerHTML);
-
-  var svgString = new XMLSerializer().serializeToString(svgElement);
-
-  var canvas = document.createElement("canvas");
-  var ctx = canvas.getContext("2d");
-  ctx.fillStyle = "white";
-  canvas.width = svgElement.getAttribute("width");
-  canvas.height = svgElement.getAttribute("height");
-  document.body.appendChild(canvas); // Append canvas to body temporarily for rendering
-
-  canvg(canvas, svgString, {
-    renderCallback: function() {
-      img = new Image();
-      img.src = canvas.toDataURL("image/jpeg", 1.0);
-      img.onload = function() {
-        // Remove canvas from body after image is loaded
-        document.body.removeChild(canvas);
-      };
-    }
-  });
-}
