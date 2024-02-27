@@ -364,4 +364,25 @@ button:hover {
     .frame{
         padding: 7px;
     }
+    
+    .controls {
+        width: 300px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    .about {
+        width: 300px;
+    }
+
+    #choose-dist, #choose-height, #choose-margin, #choose-width, #choose-icon-degrees, #choose-lines-degrees, #choose-number-of-lines, #choose-points-per-line, #choose-line-width, #choose-amplitude, #choose-icon-size {
+        width: 200px;
+    }
+
+    .color-picker {
+        width: 200px;
+    }
+
 }
