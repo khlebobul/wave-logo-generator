@@ -9,7 +9,11 @@ let imgScale = 1; // Default image scale
 let dropArea;
 
 function setup() {
-  createCanvas(550, 550);
+  if (windowWidth < 750) {
+    createCanvas(300, 300);
+  } else {
+    createCanvas(600, 600);
+  }
   amp = height / lines;
   noFill();
   bgColor = color('#2541E1'); // Default background color
@@ -125,7 +129,6 @@ function loadImageFromFile(file) {
   }
 }
 
-
 // Function to handle background color selection
 document.getElementById('choose-background-color').addEventListener('input', function(event) {
   bgColor = color(event.target.value);
@@ -160,3 +163,12 @@ document.getElementById('choose-icon-size').addEventListener('input', function(e
 document.getElementById('save-png').addEventListener('click', function() {
   saveCanvas('wave-logo-generator', 'png');
 });
+
+// Function to dynamically adjust canvas size when window is resized
+function windowResized() {
+  if (windowWidth < 750) {
+    resizeCanvas(300, 600);
+  } else {
+    resizeCanvas(600, 600);
+  }
+}
