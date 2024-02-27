@@ -10,6 +10,8 @@ let dropArea;
 
 function setup() {
   if (windowWidth < 750) {
+    createCanvas(400, 400);
+  } else if (windowWidth < 470) {
     createCanvas(300, 300);
   } else {
     createCanvas(600, 600);
@@ -167,7 +169,9 @@ document.getElementById('save-png').addEventListener('click', function() {
 // Function to dynamically adjust canvas size when window is resized
 function windowResized() {
   if (windowWidth < 750) {
-    resizeCanvas(300, 600);
+    resizeCanvas(400, 400);
+  } else if (windowWidth < 470) {
+    resizeCanvas(300, 300);
   } else {
     resizeCanvas(600, 600);
   }
