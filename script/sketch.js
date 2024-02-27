@@ -9,7 +9,7 @@ let imgScale = 1; // Default image scale
 let dropArea;
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(550, 550);
   amp = height / lines;
   noFill();
   bgColor = color('#2541E1'); // Default background color
