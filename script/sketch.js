@@ -56,10 +56,25 @@ function getVerticalOffset(x, y) {
   imgY = floor(imgY);
   if (imgX < 0 || imgX > img.width - 1 || imgY < 0 || imgY > img.height - 1)
     return 0;
-  let index = (imgY * img.width + imgX) * 4; // 4 channels (RGBA)
+
+  // Индекс пикселя в массиве изображения
+  let index = (imgY * img.width + imgX) * 4; // 4 канала (RGBA)
+  
+  // Получение значений красного, зеленого, синего и альфа каналов пикселя
   let redValue = img.pixels[index];
+  let greenValue = img.pixels[index + 1];
+  let blueValue = img.pixels[index + 2];
+  let alphaValue = img.pixels[index + 3];
+  
+  // Если альфа канал равен 0 (прозрачный пиксель), вертикальное смещение равно 0
+  if (alphaValue === 0) {
+    return 0;
+  }
+  
+  // Иначе возвращаем значение красного канала, как и ранее
   return map(redValue, 0, 255, -amp, 0);
 }
+
 
 function canvasToImageCoords(x, y) {
   x -= width / 2;
