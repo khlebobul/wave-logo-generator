@@ -118,19 +118,34 @@ document.getElementById('drop-area').addEventListener('dragover', function(event
   event.stopPropagation();
 });
 
-// Function to load image from file
 function loadImageFromFile(file) {
   if (file) {
     const extension = file.name.split('.').pop().toLowerCase();
     if (extension === 'svg') {
-      const xhr = new XMLHttpRequest();
-      xhr.onload = function() {
-        const svgContent = xhr.responseText;
-        console.log("SVG content:", svgContent);
-        // You can use this SVG content for displaying on the canvas or other purposes
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const svgContent = event.target.result;
+        // Создаем новый элемент SVG
+        const imgElement = new Image();
+        imgElement.onload = function() {
+          // После успешной загрузки SVG, создаем p5.Image объект
+          img = createImage(imgElement.width, imgElement.height);
+          img.loadPixels();
+          // Копируем пиксели изображения в p5.Image
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(imgElement, 0, 0);
+          const imageData = ctx.getImageData(0, 0, img.width, img.height);
+          img.pixels = imageData.data;
+          img.updatePixels();
+          // Скрываем область загрузки изображения
+          document.getElementById('drop-area').style.opacity = "0";
+        };
+        imgElement.src = URL.createObjectURL(file);
       };
-      xhr.open("GET", URL.createObjectURL(file));
-      xhr.send();
+      reader.readAsDataURL(file);
     } else if (extension === 'png' || extension === 'jpg' || extension === 'jpeg') {
       const reader = new FileReader();
       reader.onload = function(event) {
@@ -145,6 +160,7 @@ function loadImageFromFile(file) {
     }
   }
 }
+
 
 // Function to handle background color selection
 document.getElementById('choose-background-color').addEventListener('input', function(event) {
