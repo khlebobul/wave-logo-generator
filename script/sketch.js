@@ -5,7 +5,7 @@ let amp;
 let bgColor;
 let lineColor;
 let lineWidth = 2; // Default line width
-let imgScale = 1; // Default image scale
+let imgScale = 0.5; // Default image scale
 let dropArea;
 
 function setup() {
