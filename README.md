@@ -6,51 +6,55 @@ Web applications for logitype creation based on p5.js library algorithm.
 - [ ] Load video
 
 ### Algorithm
-``` function drawLines() {
+```
+// Draws lines on the canvas based on the specified number of lines and points per line.
+function drawLines() {
   let lineHeight = height / (lines + 1);
   for (let i = 1; i <= lines; i++) {
     let y = i * lineHeight;
     beginShape();
-    drawPoints(y);
+    drawPoints(y); // Draws points for each line
     endShape();
   }
 }
 
+// Draws points on a specified y-coordinate line.
 function drawPoints(y) {
   let pointSpacing = width / (pointsPerLine + 1);
   for (let i = 1; i <= pointsPerLine; i++) {
     let x = i * pointSpacing;
-    let offset = getVerticalOffset(x, y);
-    vertex(x, y + offset);
+    let offset = getVerticalOffset(x, y); // Calculates vertical offset for each point
+    vertex(x, y + offset); // Draws a vertex at the calculated position
   }
 }
 
+// Calculates the vertical offset based on the pixel values of the image at the given canvas coordinates.
 function getVerticalOffset(x, y) {
-  let [imgX, imgY] = canvasToImageCoords(x, y);
+  let [imgX, imgY] = canvasToImageCoords(x, y); // Converts canvas coordinates to image coordinates
   imgX = floor(imgX);
   imgY = floor(imgY);
   if (imgX < 0 || imgX > img.width - 1 || imgY < 0 || imgY > img.height - 1)
     return 0;
 
-  // Индекс пикселя в массиве изображения
-  let index = (imgY * img.width + imgX) * 4; // 4 канала (RGBA)
+  // Index of the pixel in the image pixel array
+  let index = (imgY * img.width + imgX) * 4; // 4 channels (RGBA)
   
-  // Получение значений красного, зеленого, синего и альфа каналов пикселя
+  // Getting the values of red, green, blue, and alpha channels of the pixel
   let redValue = img.pixels[index];
   let greenValue = img.pixels[index + 1];
   let blueValue = img.pixels[index + 2];
   let alphaValue = img.pixels[index + 3];
   
-  // Если альфа канал равен 0 (прозрачный пиксель), вертикальное смещение равно 0
+  // If alpha channel is 0 (transparent pixel), vertical offset is 0
   if (alphaValue === 0) {
     return 0;
   }
   
-  // Иначе возвращаем значение красного канала, как и ранее
-  return map(redValue, 0, 255, -amp, 0);
+  // Otherwise, return the red channel value as before
+  return map(redValue, 0, 255, -amp, 0); // Mapping red value to vertical offset
 }
 
-
+// Converts canvas coordinates to image coordinates.
 function canvasToImageCoords(x, y) {
   x -= width / 2;
   y -= height / 2;
@@ -61,11 +65,13 @@ function canvasToImageCoords(x, y) {
   y += img.height / 2;
   return [x, y];
 }
+
 ```
 
 ### Image 
 
-``` function loadImageFromFile(file) {
+```
+function loadImageFromFile(file) {
   if (file) {
     const extension = file.name.split('.').pop().toLowerCase();
     if (extension === 'svg') {
