@@ -268,12 +268,3 @@ document.getElementById("searchIconInput").addEventListener("input", function() 
   });
 });
 
-document.getElementById("iconGrid").addEventListener("click", function(event) {
-  var clickedIcon = event.target.closest(".icon-wrapper");
-  if (clickedIcon) {
-    var iconName = clickedIcon.getAttribute("data-lucide");
-    if (iconName) {
-      console.log("Выбрана иконка:", iconName);
-    }
-  }
-});
