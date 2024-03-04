@@ -3,7 +3,9 @@
 Web applications for logitype creation based on p5.js library algorithm. 
 
 ### Demo
-- [ ] Load video
+
+https://github.com/khlebobul/wave-logo-generator/assets/77191581/45a08263-ee40-4899-9aad-e4a4b3c34228
+
 
 ### Algorithm
 ```
