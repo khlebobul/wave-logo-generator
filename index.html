@@ -9,7 +9,7 @@
       <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
       <link rel="manifest" href="assets/favicon/site.webmanifest" />
-      <link rel="preconnect" href="https://fonts.googleapis.com">   
+      <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@200;300;900&display=swap" rel="stylesheet">
       <!-- Yandex.Metrika counter -->
@@ -19,14 +19,16 @@
          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
          (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
+         
          ym(96649633, "init", {
             clickmap:true,
             trackLinks:true,
             accurateTrackBounce:true
          });
       </script>
-      <noscript><div><img src="https://mc.yandex.ru/watch/96649633" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+      <noscript>
+         <div><img src="https://mc.yandex.ru/watch/96649633" style="position:absolute; left:-9999px;" alt="" /></div>
+      </noscript>
       <!-- /Yandex.Metrika counter -->
    </head>
    <body>
@@ -54,18 +56,18 @@
          <div class="between"></div>
          <p1 class="range-lable">Number of lines</p1>
          <div class="range_input">
-           <label for="choose-number-of-lines"></label>
-           <input
-             type="range"
-             id="choose-number-of-lines" 
-             name="choose-number-of-lines"
-             value="100"
-             min="10"
-             max="300"
-             step="10"
-             oninput="this.nextElementSibling.value = this.value"
-           />
-           <output>100</output>
+            <label for="choose-number-of-lines"></label>
+            <input
+               type="range"
+               id="choose-number-of-lines" 
+               name="choose-number-of-lines"
+               value="100"
+               min="10"
+               max="300"
+               step="10"
+               oninput="this.nextElementSibling.value = this.value"
+               />
+            <output>100</output>
          </div>
          <p1 class="range-lable">Points per line</p1>
          <div class="range_input">
@@ -123,19 +125,19 @@
          </main>
          <input type="file" id="choose-file" name="choose-file" accept="image/*" style="display: none;"/>
          <div id="drop-area">
-            <p class="drop-area-text">Drag & Drop file here <br>or<br> Pick an Icon</p> 
-         </div>         
+            <p class="drop-area-text">Drag & Drop file here <br>or<br> Pick an Icon</p>
+         </div>
          <div class="buttons">
-          <label for="choose-file" class="file-button">Choose file</label>
-         <input
-            type="file"
-            id="choose-file"
-            name="choose-file"
-            accept="image/*"
-            style="display: none;"
-            />
+            <label for="choose-file" class="file-button">Choose file</label>
+            <input
+               type="file"
+               id="choose-file"
+               name="choose-file"
+               accept="image/*"
+               style="display: none;"
+               />
             <button id="save-png">Download PNG</button>
-         </div> 
+         </div>
       </div>
    </body>
    <!-- scripts for icons -->
