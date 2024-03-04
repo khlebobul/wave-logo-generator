@@ -1,0 +1,8 @@
+.DS_Store
+/assets/cloud-svgrepo-com.svg
+/assets/gear.jpg
+/assets/lightning.png
+
+/node_modules
+.package-lock.json
+.package.json
