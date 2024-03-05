@@ -120,5 +120,4 @@ function loadImageFromFile(file) {
 Made by Gleb (a.k.a. khlebobul). Check my [Website](https://bento.me/khlebobul) and [Twitter(X)](https://twitter.com/khlebobul).
 Support this project through [Buy Me a Coffee](https://bmc.link/khlebobul) or [Cloudtips](https://pay.cloudtips.ru/p/edff283a).
 Thanks to [Ivan](https://ivandianov.com/) and [Adam](https://cdarr.ru/) from [setka.design](https://setka.design) for their help, inspiration and great [course](https://setka.design).
-Thanks to Lucide for the [Icons](https://lucide.dev/).  
 For bugs and features [sbgleb10@gmail.com](mailto:sbgleb10@gmail.com).
