@@ -1,6 +1,6 @@
 # Wave-logo-generator
 
-Web applications for logitype creation based on p5.js library algorithm. 
+Hey, Wave Logo Generator is basically your logo buddy! Just toss in a cool image, tweak the settings a bit, and voila - logo magic! It's all about keeping things simple and getting creative. Totally free!
 
 ### Demo
 
