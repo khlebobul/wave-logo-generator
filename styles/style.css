@@ -128,6 +128,10 @@ a {
     color: #5d5c5c;
 }
 
+.guide {
+    color: #ccc;
+}
+
 .between {
     padding-top: 20px;
 }
