@@ -1,5 +1,7 @@
 # Wave-logo-generator
 
+[![X](https://img.shields.io/badge/X-000?style=for-the-badge&logo=x)](https://x.com/khlebobul) [![Telegram](https://img.shields.io/badge/Telegram-000?style=for-the-badge&logo=telegram&logoColor=2CA5E0)](https://t.me/khlebobul)
+
 Hey, Wave Logo Generator is basically your logo buddy! Just toss in a cool image, tweak the settings a bit, and voila - logo magic! It's all about keeping things simple and getting creative. Totally free!
 
 ### Demo
@@ -8,7 +10,7 @@ https://github.com/khlebobul/wave-logo-generator/assets/77191581/45a08263-ee40-4
 
 
 ### Algorithm
-```
+```js
 // Draws lines on the canvas based on the specified number of lines and points per line.
 function drawLines() {
   let lineHeight = height / (lines + 1);
@@ -72,7 +74,7 @@ function canvasToImageCoords(x, y) {
 
 ### Image 
 
-```
+```js
 function loadImageFromFile(file) {
   if (file) {
     const extension = file.name.split('.').pop().toLowerCase();
@@ -80,13 +82,13 @@ function loadImageFromFile(file) {
       const reader = new FileReader();
       reader.onload = function(event) {
         const svgContent = event.target.result;
-        // Создаем новый элемент SVG
+        // Create a new SVG element
         const imgElement = new Image();
         imgElement.onload = function() {
-          // После успешной загрузки SVG, создаем p5.Image объект
+          // After SVG is loaded successfully, create a p5.Image object
           img = createImage(imgElement.width, imgElement.height);
           img.loadPixels();
-          // Копируем пиксели изображения в p5.Image
+          // Copy the image pixels to the p5.Image
           const canvas = document.createElement('canvas');
           canvas.width = img.width;
           canvas.height = img.height;
@@ -95,7 +97,7 @@ function loadImageFromFile(file) {
           const imageData = ctx.getImageData(0, 0, img.width, img.height);
           img.pixels = imageData.data;
           img.updatePixels();
-          // Скрываем область загрузки изображения
+          // Hide the image loading area
           document.getElementById('drop-area').style.opacity = "0";
         };
         imgElement.src = URL.createObjectURL(file);
@@ -117,6 +119,6 @@ function loadImageFromFile(file) {
 }
 ```
 
-Made by Gleb (a.k.a. khlebobul). Check my [Website](https://bento.me/khlebobul) and [Twitter(X)](https://twitter.com/khlebobul).
+Made by Gleb (a.k.a. khlebobul). Check my [Website](https://khlebobul.github.io/) and [Twitter(X)](https://twitter.com/khlebobul).
 Support this project through [Cloudtips](https://pay.cloudtips.ru/p/edff283a).
 Thanks to [Ivan](https://ivandianov.com/) and [Adam](https://cdarr.ru/) from [setka.design](https://setka.design) for their help, inspiration and great [course](https://setka.design).
