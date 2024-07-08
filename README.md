@@ -8,6 +8,10 @@ Hey, Wave Logo Generator is basically your logo buddy! Just toss in a cool image
 
 https://github.com/khlebobul/wave-logo-generator/assets/77191581/45a08263-ee40-4899-9aad-e4a4b3c34228
 
+### Not Yet Implemented
+
+- [ ] Selecting icons from the set 
+- [ ] Ability to download in SVG format
 
 ### Algorithm
 ```js
@@ -120,5 +124,4 @@ function loadImageFromFile(file) {
 ```
 
 Made by Gleb (a.k.a. khlebobul). Check my [Website](https://khlebobul.github.io/) and [Twitter(X)](https://twitter.com/khlebobul).
-Support this project through [Cloudtips](https://pay.cloudtips.ru/p/edff283a).
 Thanks to [Ivan](https://ivandianov.com/) and [Adam](https://cdarr.ru/) from [setka.design](https://setka.design) for their help, inspiration and great [course](https://setka.design).
