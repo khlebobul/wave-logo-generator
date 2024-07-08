@@ -1,6 +1,6 @@
 # Wave-logo-generator
 
-[![X](https://img.shields.io/badge/X-000?style=for-the-badge&logo=x)](https://x.com/khlebobul) [![Telegram](https://img.shields.io/badge/Telegram-000?style=for-the-badge&logo=telegram&logoColor=2CA5E0)](https://t.me/khlebobul)
+[![X](https://img.shields.io/badge/X-000?style=for-the-badge&logo=x)](https://x.com/khlebobul) [![Telegram](https://img.shields.io/badge/Telegram-000?style=for-the-badge&logo=telegram&logoColor=2CA5E0)](https://t.me/khlebobul) [![ProductHunt](https://img.shields.io/badge/producthunt-DA552F?style=for-the-badge&logo=producthunt&logoColor=white)](https://www.producthunt.com/products/wave-logo-generator#wave-logo-generator)
 
 Hey, Wave Logo Generator is basically your logo buddy! Just toss in a cool image, tweak the settings a bit, and voila - logo magic! It's all about keeping things simple and getting creative. Totally free!
 
